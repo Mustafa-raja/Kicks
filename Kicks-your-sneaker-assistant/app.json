@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Kicks",
-    "slug": "Kicks",
+    "name": "Kicks-your-sneaker-assistant",
+    "slug": "Kicks-your-sneaker-assistant",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
