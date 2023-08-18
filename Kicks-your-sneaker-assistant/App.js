@@ -20,10 +20,14 @@ export default function App() {
       {/* <pointLight position={[0, 10, -5]} intensity={1} color="#fff" /> */}
       <directionalLight intensity={2} position={[10, 10, 20]} color="white" />
       <mesh rotation={[Math.PI / 4, 0, 0]}>
-        <Box position={[2, -1.2, 0]} />
-        <Box position={[0, 1.2, 0]} />
+        <Box position={[0, 2, 0]} />
+        <Box position={[1, 1.2, 0]} />
         {/* <sphereGeometry args={[1, 32, 32]} /> */}
         <meshStandardMaterial color={'orange'} />
+      </mesh>
+      <mesh scale={0.05} >
+        <torusKnotGeometry scale={1} args={[7, 0.99, 300, 20, 8, 18]} />
+        <meshStandardMaterial color={'green'} />
       </mesh>
     </Canvas>
   );
