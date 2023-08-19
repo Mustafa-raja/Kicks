@@ -1,11 +1,16 @@
-import React from 'react';
-import { Canvas } from '@react-three/fiber';
-import { SphereGeometry, MeshStandardMaterial } from 'three';
+import React, {useRef} from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 
 function Box(props) {
+  const mesh = useRef();
+
+  useFrame((state, delta) => {
+    mesh.current.rotation.y += delta
+  })
   return (
-    <mesh {...props}>
-      <boxGeometry args={[1, 1, 1]} />
+    <mesh {...props}  ref = {mesh} >
+      <boxGeometry />
+      
       <meshStandardMaterial color={'orange'} />
     </mesh>
   );
@@ -14,20 +19,22 @@ function Box(props) {
 
 
 export default function App() {
+
+  
   return (
     <Canvas>
-      <ambientLight intensity={0.5} />
-      {/* <pointLight position={[0, 10, -5]} intensity={500} color="#fff" /> */}
-      <directionalLight intensity={1} position={[10, 10, 20]} color="white" />
-      <mesh rotation={[Math.PI / 4, 0, 0]}>
+      {/* <ambientLight intensity={0.5} /> */}
+      <pointLight position={[6,4,10]} intensity={150} color="#fff" />
+      {/* <directionalLight intensity={1} position={[10, 10, 20]} color="white" /> */}
+      <mesh>
         <Box position={[0, 2, 0]} />
-        <Box position={[1, 1.2, 0]} />
+        <Box position={[0, 0.1, 0]} />
         {/* <sphereGeometry args={[1, 32, 32]} /> */}
         <meshStandardMaterial color={'orange'} />
       </mesh>
       <mesh scale={0.05} >
-        <torusKnotGeometry scale={1} args={[7, 0.99, 300, 20, 8, 18]} />
-        <meshStandardMaterial color={'green'} />
+        {/* <torusKnotGeometry scale={1} args={[7, 0.99, 300, 20, 8, 18]} />
+        <meshStandardMaterial color={'green'} /> */}
       </mesh>
     </Canvas>
   );
